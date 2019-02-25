@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用 rfctl 管理 | Refunc</title>
+    <meta name="description" content="企业级无服务运行平台">
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+  <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/styles.b11f9bd2.css" as="style"><link rel="preload" href="/assets/js/app.b11f9bd2.js" as="script"><link rel="preload" href="/assets/js/10.8e44d2bd.js" as="script"><link rel="prefetch" href="/assets/js/1.800de292.js"><link rel="prefetch" href="/assets/js/2.f624f7e8.js"><link rel="prefetch" href="/assets/js/3.e7416ffa.js"><link rel="prefetch" href="/assets/js/4.cceb68e3.js"><link rel="prefetch" href="/assets/js/5.5a64f083.js"><link rel="prefetch" href="/assets/js/6.b7666c1e.js"><link rel="prefetch" href="/assets/js/7.2161dc5a.js"><link rel="prefetch" href="/assets/js/8.b224c0e5.js"><link rel="prefetch" href="/assets/js/9.ae9c42a7.js">
+    <link rel="stylesheet" href="/assets/css/styles.b11f9bd2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/zh/" class="home-link router-link-active"><!----><span class="site-name">
+      Refunc
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/guide/" class="nav-link router-link-active">指南</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Languages</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="/zh/guide/rfctl.html" class="nav-link router-link-exact-active router-link-active">简体中文</a></li><li class="dropdown-item"><!----><a href="/" class="nav-link">English</a></li></ul></div></div><a href="https://github.com/refunc/refunc" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/guide/" class="nav-link router-link-active">指南</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Languages</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="/zh/guide/rfctl.html" class="nav-link router-link-exact-active router-link-active">简体中文</a></li><li class="dropdown-item"><!----><a href="/" class="nav-link">English</a></li></ul></div></div><a href="https://github.com/refunc/refunc" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav><ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>指南</span><!----></p><ul class="sidebar-group-items"><li><a href="/zh/guide/" class="sidebar-link">介绍</a></li><li><a href="/zh/guide/quickstart.html" class="sidebar-link">快速开始</a></li><li><a href="/zh/guide/rfctl.html" class="active sidebar-link">使用 rfctl 管理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/rfctl.html#安装命令行" class="sidebar-link">安装命令行</a></li><li class="sidebar-sub-header"><a href="/zh/guide/rfctl.html#配置客户端" class="sidebar-link">配置客户端</a></li><li class="sidebar-sub-header"><a href="/zh/guide/rfctl.html#创建第一个函数" class="sidebar-link">创建第一个函数</a></li></ul></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="使用-rfctl-管理"><a href="#使用-rfctl-管理" aria-hidden="true" class="header-anchor">#</a> 使用 rfctl 管理</h1><div class="warning custom-block"><p class="custom-block-title">WARNING</p><p>特别注意: 下面文档描述功能在社区版可能并未完全支持</p></div><p>Refunc 提供一个基于Python的命令行工具<a href="https://github.com/refunc/py-rfctl" target="_blank" rel="noopener noreferrer">rfctl<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>来管理云函数</p><h2 id="安装命令行"><a href="#安装命令行" aria-hidden="true" class="header-anchor">#</a> 安装命令行</h2><p>使用 <code>pip</code> 来安装它:</p><div class="language-bash extra-class"><pre class="language-bash"><code>pip <span class="token function">install</span> rfctl
+</code></pre></div><p><code>rfctl</code> 在安装的时候会自动安装依赖<a href="https://github.com/refunc/py-refunc" target="_blank" rel="noopener noreferrer">py-refunc<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>, 它是Refunc 的Python云函数运行时库, 同时支持本地开发, 用法后面会详细介绍</p><h2 id="配置客户端"><a href="#配置客户端" aria-hidden="true" class="header-anchor">#</a> 配置客户端</h2><p><code>rfctl</code> 安装完成后还需要简单的配置才能使用 😄</p><p>预生成的配置文件默认生成了简单的用户信息放到 <code>refunc/creds-admin</code> 的 <code>ConfigMap</code> 中:</p><div class="language-bash extra-class"><pre class="language-bash"><code>$ kubectl get configmaps creds-admin -n refunc -o yaml --export
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    refunc.io/is-credential-config: <span class="token string">&quot;true&quot;</span>
+  creationTimestamp: null
+  labels:
+    app: refunc
+    chart: refunc-0.1.3
+    heritage: Tiller
+    release: refunc
+  name: creds-admin
+  selfLink: /api/v1/namespaces/refunc/configmaps/creds-admin
+data:
+  id: admin
+  accessKey: AKIAIOSFODNN7EXAMPLE
+  secretKey: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
+  permissions: <span class="token operator">|</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">&quot;publish&quot;</span><span class="token keyword">:</span> <span class="token punctuation">[</span><span class="token string">&quot;refunc.&gt;&quot;</span>, <span class="token string">&quot;_refunc.&gt;&quot;</span><span class="token punctuation">]</span>,
+        <span class="token string">&quot;subscribe&quot;</span><span class="token keyword">:</span> <span class="token punctuation">[</span><span class="token string">&quot;_INBOX.*.*&quot;</span>,<span class="token string">&quot;_INBOX.*&quot;</span>, <span class="token string">&quot;refunc.&gt;&quot;</span>, <span class="token string">&quot;_refunc.&gt;&quot;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><div class="warning custom-block"><p class="custom-block-title">WARNING</p><p>特别注意: 上面出现的 <code>accessKey</code> 和 <code>secretKey</code> 仅为了本地测试使用, 不要在其他环境中误用</p></div><p>我们需要将上面的信息写到本地的配置文件中: <code>${HOME}/.refunc/config.yaml</code>:</p><div class="warning custom-block"><p class="custom-block-title">WARNING</p><p>特别注意: 执行下面命令会覆盖原来的配置文件, 如果你之前已经有企业版的配置文件, 现在只是要测试下的话, 记得备份原来的配置</p></div><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 创建目录</span>
+<span class="token function">mkdir</span> -p <span class="token variable">${HOME}</span>/.refunc <span class="token operator">||</span> <span class="token boolean">true</span>
+
+<span class="token comment"># 配置写到 config.yaml</span>
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span>EOF <span class="token operator">&gt;</span><span class="token variable">${HOME}</span>/.refunc/config.yaml
+apiURL: nats://127.0.0.1:30092
+username: admin
+credentials:
+  accessKey: AKIAIOSFODNN7EXAMPLE
+  secretKey: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
+EOF
+</code></pre></div><h3 id="测试下"><a href="#测试下" aria-hidden="true" class="header-anchor">#</a> 测试下</h3><p>走到这大概率我们的系统就部署好了, 终于可以测试下了</p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>如果基于Minikube部署的, nodePort默认无法通过本地回环地址访问, 你需要找到当前Minikube虚拟机的IP地址</p><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">export</span> REFUNC_GATEWAY_URL<span class="token operator">=</span>nats://<span class="token variable"><span class="token variable">$(</span>minikube ip<span class="token variable">)</span></span>:30092
+</code></pre></div></div><p>确认现在系统 Python 版本至少是 3.6</p><div class="language-bash extra-class"><pre class="language-bash"><code>rfctl call builtins/cluster-info
+</code></pre></div><p>如果不出意外你将看到类似下面的输出:</p><blockquote><p>{&quot;refuncVersion&quot;: &quot;6c0f75ff&quot;, &quot;agentVersion&quot;: &quot;1f6db1fa&quot;}</p></blockquote><h2 id="创建第一个函数"><a href="#创建第一个函数" aria-hidden="true" class="header-anchor">#</a> 创建第一个函数</h2><p>使用 rfctl 创建一个云函数:</p><div class="language-bash extra-class"><pre class="language-bash"><code>$ rfctl new functions/helloworld --runtime python --init-git<span class="token operator">=</span>false
+Creating <span class="token string">&quot;functions/helloworld&quot;</span> <span class="token keyword">in</span> Helloworld
+</code></pre></div><p>此时会在当前路径下创建一个名为 <code>Helloworld</code> 的文件夹</p><div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">ls</span> Helloworld
+README.md   main.py     refunc.yaml
+</code></pre></div><p>rfctl 会自动生成一个模板工程, <code>main.py</code> 的内容为</p><div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">import</span> refunc
+<span class="token keyword">from</span> refunc <span class="token keyword">import</span> Context<span class="token punctuation">,</span> Message
+
+
+<span class="token keyword">def</span> <span class="token function">on_request</span><span class="token punctuation">(</span>ctx<span class="token punctuation">:</span> Context<span class="token punctuation">,</span> payload<span class="token punctuation">:</span> <span class="token builtin">dict</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__refunc_dev__'</span><span class="token punctuation">:</span>
+    <span class="token comment"># run using:</span>
+    <span class="token comment"># refunc-dev main.py</span>
+
+    <span class="token keyword">import</span> refunc
+    <span class="token keyword">from</span> refunc<span class="token punctuation">.</span>util <span class="token keyword">import</span> enable_logging
+
+    <span class="token comment"># setup mock</span>
+    enable_logging<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># set mock endpoint</span>
+    refunc<span class="token punctuation">.</span>current_env<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>context<span class="token punctuation">.</span>set_mock_endpoint<span class="token punctuation">(</span><span class="token string">'functions/helloworld'</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># add extra mock points, for example:</span>
+    <span class="token comment"># comment out the following lines, a function at &quot;foo/bar&quot; can be mocked</span>
+    <span class="token comment">#</span>
+    <span class="token comment"># current_env().context.add_mock_func('foo/bar', lambda c, kv: kv)</span>
+
+    <span class="token keyword">def</span> <span class="token function">simple_test</span><span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">:</span> <span class="token builtin">dict</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> refunc<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token string">&quot;functions/helloworld&quot;</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">from</span> IPython <span class="token keyword">import</span> embed
+        __name__ <span class="token operator">=</span> <span class="token string">'__main__'</span>  <span class="token comment"># fix warning</span>
+        embed<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;cannot drop into ipython, exec simple_test&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>simple_test<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>我们修改下 <code>on_reqeust</code> 的实现为:</p><div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">on_request</span><span class="token punctuation">(</span>ctx<span class="token punctuation">:</span> Context<span class="token punctuation">,</span> payload<span class="token punctuation">:</span> <span class="token builtin">dict</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">&quot;message&quot;</span><span class="token punctuation">:</span> f<span class="token string">&quot;Hi {payload.get('name')}!&quot;</span><span class="token punctuation">}</span>
+</code></pre></div><p>在 <code>Helloworld</code> 文件夹内执行命令提交函数</p><div class="language-bash extra-class"><pre class="language-bash"><code>$ rfctl apply <span class="token keyword">.</span>
+Packing <span class="token string">&quot;functions/helloworld&quot;</span>
+Applying <span class="token string">&quot;functions/helloworld&quot;</span>
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:45.995Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> extracting <span class="token function">source</span> files
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.006Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> loading .env
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.007Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> uploading package
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.134Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> start building
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.526Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> python:build<span class="token operator">|</span> compiling to pyc
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.527Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> python:build<span class="token operator">|</span> Listing <span class="token string">'.'</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.527Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> python:build<span class="token operator">|</span> Compiling <span class="token string">'./main.py'</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.527Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> building <span class="token keyword">done</span>
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.528Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> packing
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.546Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> done: functions/helloworld/blobs/ab2c401b286a5dadf59e18a4282a2a33.tar.gz
+<span class="token punctuation">[</span>  <span class="token operator">&gt;&gt;</span><span class="token punctuation">]</span> 0912T11:32:46.548Z refunc/builder<span class="token punctuation">]</span> <span class="token punctuation">[</span>fn I<span class="token punctuation">]</span> applying func <span class="token string">'functions/helloworld'</span>
+Done <span class="token string">&quot;functions/helloworld&quot;</span>
+</code></pre></div><p>好了, 到目前为止我们已经实现了一个云函数, 在代码里调用试一试:</p><div class="language-bash extra-class"><pre class="language-bash"><code>rfctl call functions/helloworld --data <span class="token string">'{&quot;name&quot;: &quot;ZhaoBin&quot;}'</span>
+</code></pre></div><p>也可以在 python 的 console 或者 iPython 里交互的调用</p><div class="language-shell extra-class"><pre class="language-shell"><code>$ ipython
+Python 3.6.6 <span class="token operator">|</span>Anaconda, Inc.<span class="token operator">|</span> <span class="token punctuation">(</span>default, Jun 28 2018, 11:07:29<span class="token punctuation">)</span>
+Type <span class="token string">'copyright'</span>, <span class="token string">'credits'</span> or <span class="token string">'license'</span> <span class="token keyword">for</span> <span class="token function">more</span> information
+IPython 6.4.0 -- An enhanced Interactive Python. Type <span class="token string">'?'</span> <span class="token keyword">for</span> help.
+
+In <span class="token punctuation">[</span>1<span class="token punctuation">]</span>: <span class="token function">import</span> refunc
+
+In <span class="token punctuation">[</span>2<span class="token punctuation">]</span>: refunc.invoke<span class="token punctuation">(</span><span class="token string">&quot;functions/helloworld&quot;</span>, name<span class="token operator">=</span><span class="token string">&quot;ZhaoBin&quot;</span><span class="token punctuation">)</span>
+Out<span class="token punctuation">[</span>2<span class="token punctuation">]</span>: <span class="token punctuation">{</span><span class="token string">'message'</span><span class="token keyword">:</span> <span class="token string">'hi ZhaoBin!'</span><span class="token punctuation">}</span>
+</code></pre></div></div><div class="page-edit"><div class="edit-link"><a href="https://github.com/refunc/refunc/edit/master/docs/zh/guide/rfctl.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div><div class="last-updated"><span class="prefix">上次更新: </span><span class="time">2019/1/9 上午12:10:13</span></div></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/zh/guide/quickstart.html" class="prev">
+          快速开始
+        </a></span><!----></p></div></div></div></div>
+    <script src="/assets/js/app.b11f9bd2.js" defer></script><script src="/assets/js/10.8e44d2bd.js" defer></script>
+  </body>
+</html>
